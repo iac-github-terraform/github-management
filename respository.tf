@@ -12,3 +12,19 @@ resource "github_repository" "github-management" {
   auto_init          = false
   topics             = ["config", "terraform"]
 }
+
+# Set up baseline configs for the repo
+resource "github_branch_protection" "team_baseline_config" {
+  repository     = github_repository.github-management.name
+  branch         = "main"
+
+  required_status_checks {
+    # require up to date before merging
+    strict = true
+    contexts = ["iac-github-terraform/github-management"]
+  }
+  required_pull_request_reviews {
+    dismiss_stale_reviews      = true
+    require_code_owner_reviews = false
+  }
+}
