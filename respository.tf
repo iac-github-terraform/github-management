@@ -48,6 +48,6 @@ resource "github_team_membership" "team1" {
 
 resource "github_team_repository" "organisation_admin" {
   team_id    = github_team.team1.id
-  repository = github_repository.organisation_admin.name
+  repository = github_repository.github-management.name
   permission = "admin"
 }
