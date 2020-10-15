@@ -95,7 +95,7 @@ resource "github_team" "team2" {
 resource "github_team_membership" "team2" {
   team_id  = github_team.team2.id
   username = github_membership.team_bot.username
-  role     = "closed"
+  role     = "admin"
 }
 
 resource "github_team_repository" "backend_repo" {
