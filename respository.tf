@@ -28,3 +28,9 @@ resource "github_branch_protection" "team_baseline_config" {
     require_code_owner_reviews = false
   }
 }
+
+resource "github_team_repository" "organisation_admin" {
+  team_id    = github_team.team1.id
+  repository = github_repository.organisation_admin.name
+  permission = "admin"
+}
